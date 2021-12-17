@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  ms-venda-backend:
+    container_name: ms-venda-backend
+    build: .
+    ports:
+      - "3333:5000"
+    command: npm start
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=buiatte.com.br
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - DB_DATABASE=postgres
+      - DB_PORT=55433
+      - DB_SSL=false
+      - REDIS_HOST=buiatte.com.br
+      - REDIS_PORT=6379
+      - APP_SECRET=abcabc
+
