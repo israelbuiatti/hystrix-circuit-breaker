@@ -1,4 +1,4 @@
-package com.javatechie.spring.bookMyShow.api;
+package com.example.circuitbreaker;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
