@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  microservice1:
+    container_name: microservice1
+    image: israelbuiatti/hystrixcircuitbreaker
+    #build: .
+    ports:
+      - "9001:5000"
+    command: npm start
+    environment:
+      - NODE_ENV=production
+
+  microservice2:
+    container_name: microservice2
+    image: israelbuiatti/hystrixcircuitbreaker
+    #build: .
+    ports:
+      - "9002:5000"
+    command: npm start
+    environment:
+      - NODE_ENV=production
+
+  microservice3:
+    container_name: microservice3
+    image: israelbuiatti/hystrixcircuitbreaker
+    #build: .
+    ports:
+      - "9003:5000"
+    command: npm start
+    environment:
+      - NODE_ENV=production            
+
