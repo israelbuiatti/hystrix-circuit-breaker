@@ -23,7 +23,7 @@ public class Service1 {
 	})
 	public Model1 service1() {
 
-		String response = template.getForObject("http://localhost:9001/circuit-breaker/200/2000", String.class);
+		String response = template.getForObject("http://localhost:9001/circuit-breaker/200/1000", String.class);
 
 		Model1 model1 = new Model1();
 		model1.setMessage(response);

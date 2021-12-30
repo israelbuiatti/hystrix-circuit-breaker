@@ -18,10 +18,10 @@ public class Service2 {
 	private RestTemplate template;
 
 	@HystrixCommand(groupKey = "group1", commandKey = "command2", fallbackMethod = "fallBack", commandProperties = {
-			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000")
 	})
 	public Model2 service2() {
-		String response = template.getForObject("http://localhost:9002/circuit-breaker/200/0", String.class);
+		String response = template.getForObject("http://localhost:9002/circuit-breaker/200/11000", String.class);
 
 		Model2 model2 = new Model2();
 		model2.setMessage(response);
