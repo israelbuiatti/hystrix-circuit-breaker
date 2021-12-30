@@ -1,4 +1,4 @@
-package com.example.circuitbreaker;
+package br.com.example.circuitbreaker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

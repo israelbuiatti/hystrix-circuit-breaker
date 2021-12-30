@@ -6,20 +6,17 @@ function sleep(ms) {
 
 const routes = Router();
 
-routes.use('/circuit-breaker/:statusCode/:sleepTime', async (req, res) => {
-    const { statusCode, sleepTime } = req.params;
+routes.use('/circuit-breaker', async (req, res) => {
 
-    req.params.date = new Date();
+    const sleepTime = process.env.SLEEP;
+    const message = "Service running...";
 
-    
-    console.log(req.params);
-    
-    await sleep(sleepTime);
+    console.log(new Date(), `-- sleep: ${sleepTime}ms -- `, message);
 
-    res.status(statusCode).send("Service running...");
+    await sleep(sleepTime);     
+
+    res.status(200).send(message);
 });
-
-
 
 
 export default routes;

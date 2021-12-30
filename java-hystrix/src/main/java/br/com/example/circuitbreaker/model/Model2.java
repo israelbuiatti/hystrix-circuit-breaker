@@ -1,10 +1,10 @@
-package com.example.circuitbreaker.model;
+package br.com.example.circuitbreaker.model;
 
 import lombok.Data;
 
 @Data
-public class Model3 {
-    private String id = "service3";
+public class Model2 {
+    private String id = "service2";
     private boolean status = true;
     private String message = "Active Service";
 }

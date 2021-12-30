@@ -1,12 +1,12 @@
-package com.example.circuitbreaker.controller;
+package br.com.example.circuitbreaker.controller;
 
-import com.example.circuitbreaker.dto.ResponseDto;
-import com.example.circuitbreaker.model.Model1;
-import com.example.circuitbreaker.model.Model2;
-import com.example.circuitbreaker.model.Model3;
-import com.example.circuitbreaker.service.Service1;
-import com.example.circuitbreaker.service.Service2;
-import com.example.circuitbreaker.service.Service3;
+import br.com.example.circuitbreaker.model.Model1;
+import br.com.example.circuitbreaker.dto.ResponseDto;
+import br.com.example.circuitbreaker.model.Model2;
+import br.com.example.circuitbreaker.model.Model3;
+import br.com.example.circuitbreaker.service.Service1;
+import br.com.example.circuitbreaker.service.Service2;
+import br.com.example.circuitbreaker.service.Service3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,0 +1,44 @@
+hystrix.command.default:
+  circuitBreaker:
+    requestVolumeThreshold: 5 # default: 20
+
+hystrix.command.service2:
+  execution:
+    isolation.strategy: THREAD
+    isolation.thread.timeoutInMilliseconds: 6000 #default: 1000
+    timeout.enabled: true
+    isolation.thread.interruptOnTimeout: true
+    isolation.thread.interruptOnCancel: false
+    isolation.semaphore.maxConcurrentRequests: 10
+
+  fallback:
+    isolation.semaphore.maxConcurrentRequests: 10
+    enabled: true
+
+  circuitBreaker:
+    enabled: true
+    requestVolumeThreshold: 5 # default: 20
+    sleepWindowInMilliseconds: 5000 # default: 5000
+    errorThresholdPercentage: 50
+    forceOpen: false
+    forceClosed: false
+
+  metrics:
+    rollingStats.timeInMilliseconds: 10000 # default: 10000
+    rollingPercentile.enabled: true
+    rollingPercentile.timeInMilliseconds: 60000
+    rollingPercentile.numBuckets: 6
+    rollingPercentile.bucketSize: 100
+    healthSnapshot.intervalInMilliseconds: 500
+
+hystrix.threadpool.default:
+  coreSize: 10 # default: 10
+  maximumSize: 20 # default: 10
+  keepAliveTimeMinutes: 1
+  allowMaximumSizeToDivergeFromCoreSize: true # default: false
+  maxQueueSize: -1
+  queueSizeRejectionThreshold: 5
+  metrics.rollingStats.timeInMilliseconds: 10000
+  metrics.rollingStats.numBuckets: 10
+
+

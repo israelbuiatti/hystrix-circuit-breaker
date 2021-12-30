@@ -1,6 +1,6 @@
-package com.example.circuitbreaker.service;
+package br.com.example.circuitbreaker.service;
 
-import com.example.circuitbreaker.model.Model3;
+import br.com.example.circuitbreaker.model.Model3;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.log4j.Log4j2;
@@ -17,28 +17,26 @@ public class Service3 {
 	@Autowired
 	private RestTemplate template;
 
-	@HystrixCommand(groupKey = "group1", commandKey = "command3", fallbackMethod = "fallBack", commandProperties = {
-			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "20000")
+	@HystrixCommand(groupKey = "group1", commandKey = "service3", fallbackMethod = "fallBack", commandProperties = {
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
 	})
 	public Model3 service3() {
 
 		Model3 model3 = new Model3();
 
-		String response = template.getForObject("http://localhost:9003/circuit-breaker/200/10000", String.class);
+		String response = template.getForObject("http://localhost:9003/circuit-breaker", String.class);
 		model3.setMessage(response);
 		log.info("SERVICE3::: {} - {}", new Date(), response);
 
 		return model3;
 	}
 
-	public Model3 fallBack() throws Exception {
+	public Model3 fallBack(Throwable e) throws Exception {
 
-		String message = "service gateway failed 3...";
-
-		log.error("SERVICE3 fallback::: {} - {}", new Date(), message);
+		log.error("SERVICE3::: {} - {}", new Date(), e.toString());
 
 		Model3 model3 = new Model3();
-		model3.setMessage(message);
+		model3.setMessage(e.toString());
 		model3.setStatus(false);
 
 		return model3;
